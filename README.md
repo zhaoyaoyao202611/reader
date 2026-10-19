@@ -37,9 +37,15 @@ Playwright 测试覆盖 TXT 导入、鼠标拖动划线、持久化、摘录回�
 
 ## 网站部署（GitHub Pages）
 
-代码推送到 `main` 会通过 `.github/workflows/deploy.yml` 自动构建并发布。
-首次需要在 GitHub 仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。
-如首次构建因 Pages 尚未启用而失败，开启后在 Actions 中重新运行 `Deploy Moye Reader`。
-发布成功后使用部署结果中的网址访问，无需运行本地电脑。默认预期地址为 `https://zhaoyaoyao202611.github.io/reader/`；以 GitHub 实际部署结果为准。
+仓库只使用分支发布，不再使用自定义 `Deploy Moye Reader` 工作流。
+
+- `main`：保存源码、依赖锁文件和测试。
+- `gh-pages`：只保存构建后的 `index.html`、`assets/` 和 `.nojekyll`。
+- 仓库 **Settings → Pages** 中，Source 为 **Deploy from a branch**，Branch 为 **gh-pages**，目录为 **/ (root)**。
+- 修改源码后执行 `npm ci` 和 `npm run build`，检查 `dist/`，再将构建输出更新到 `gh-pages` 分支；仅推送 `main` 不会更新线上页面。
+- GitHub 会自动创建 `pages build and deployment` 发布任务；绿色完成后才能认为部署成功。`Queued` 表示任务在等待，不应把本地构建成功当成上线成功。
+- 旧的自定义工作流记录可能仍然存在，删除工作流文件不会自动取消之前的排队任务。不要重新运行旧的 `Deploy Moye Reader`。
+
+预期网址为 `https://zhaoyaoyao202611.github.io/reader/`，以 GitHub 实际发布结果为准。网站无需本地电脑持续运行。
 
 网站上线后所有人都可以打开阅读器，但每位用户的书籍和划线仍仅保存在各自浏览器中。不要清理网站数据，保留原书并定期导出摘录。正式域名改变后，旧域名下的书库不会自动迁移。
