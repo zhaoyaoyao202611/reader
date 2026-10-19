@@ -40,6 +40,6 @@ Playwright 测试覆盖 TXT 导入、鼠标拖动划线、持久化、摘录回�
 代码推送到 `main` 会通过 `.github/workflows/deploy.yml` 自动构建并发布。
 首次需要在 GitHub 仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。
 如首次构建因 Pages 尚未启用而失败，开启后在 Actions 中重新运行 `Deploy Moye Reader`。
-发布成功后使用部署结果中的网址访问，无需运行本地电脑。默认预期地址为 `https://zhaoyaoyao202611.github.io/fortune-teller/`；以 GitHub 实际部署结果为准。
+发布成功后使用部署结果中的网址访问，无需运行本地电脑。默认预期地址为 `https://zhaoyaoyao202611.github.io/reader/`；以 GitHub 实际部署结果为准。
 
 网站上线后所有人都可以打开阅读器，但每位用户的书籍和划线仍仅保存在各自浏览器中。不要清理网站数据，保留原书并定期导出摘录。正式域名改变后，旧域名下的书库不会自动迁移。
